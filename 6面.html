@@ -14,12 +14,18 @@
             <div class="cube__face bottom">bottom</div>
         </div>
     </div>
+<button onclick="turnTop()">Turn Right</button>
     <style>
+        * {
+            transition:all 1s;
+        }
         .scene {
             width: 200px;
             height: 200px;
             perspective: 600px;
             text-align: center;
+            font-size: 3rem;
+            
         }
 
         .cube {
@@ -27,6 +33,7 @@
             height: 100%;
             position: relative;
             transform-style: preserve-3d;
+            transform: translateZ(-100px); 
         }
         .cube__face {
             position: absolute;
@@ -34,23 +41,34 @@
             height: 200px;
         }
         .front {
-            background-color:red;
+            background: hsla(  0, 100%, 50%, 0.7);
+            transform: translateZ(100px); 
         }
         .back {
-            background-color:red;
+            background: hsla(  60, 100%, 50%, 0.7);
+            transform: rotateY(180deg) translateZ(100px);
         }.left {
-            background-color:yellow;
+            background: hsla(  120, 100%, 50%, 0.7);
+            transform: rotateY(-90deg) translateZ(100px); 
         }.right {
-            background-color:yellow;
+            background: hsla(  180, 100%, 50%, 0.7);
+            transform: rotateY( 90deg) translateZ(100px); 
             
         }.top {
-            background-color:blue;
+            background: hsla(  240, 100%, 50%, 0.7);
+            transform: rotateX( 90deg) translateZ(100px); 
         }.bottom {
-            background-color:blue;
+            background: hsla(  300, 100%, 50%, 0.7);
+            transform: rotateX(-90deg) translateZ(100px);
         }
     </style>
     <script>
-        
+        let right=0
+        function turnTop(){
+            
+            right+=30
+            document.querySelector('.cube').style.transform='translateZ(-100px) rotateX('+right+'deg)'
+        }
 
 
 
